@@ -3,9 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Phone Book App</title>
 </head>
 <body>
+<main>
+    <section class="container">
+        <div>
+            <img id="logo" src="./Images/call.png" alt="logo"></div>
+        <h1>Phone Book App</h1>
+        <div class="contact-container">
+            <h2>List of Contacts</h2>
+            <button class="btn add-btn"> Add Contact</button>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search Contacts..." id="search-input"/>
+            <img id="search-btn" src="./Images/magnifying-glass.png" alt="search-icon">
+        </div>
+        
+        <div class="contact-list">
+            <div class="contact-pic">
+                <h3>Contact Pictures</h3>
+                <ul id="contact-pics">
+                    <li>
+                        <img src="" alt="">
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-names">
+                <h3>Contact Name</h3>
+                <ul id="ul-names">
+                    <li>Taha Zoabi</li>
+                </ul>
+            </div>
+            <div class="contact-numbers">
+                <h3>Contact Number</h3>
+                <ul id="ul-numbers">
+                    <li>054-873-4531</li>
+                </ul>
+            </div>
+            <div class="contact-btns">
+                <h3>Contact Buttons</h3>
+                <ul id="ul-btns">
+                    <li>
+                        <button>click me</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
+        <div class="footer">
+            <footer>All Rights Reserved &#169; Taha Zoabi</footer>
+            <a href="https://github.com/TahaZoabi" target="_blank"
+            ><img src="./Images/github.png" alt="github-icon"
+            /></a>
+            <a href="mailto:zoabi03@gmail.com"
+            ><img src="./Images/gmail.png" alt="gmail-icon"
+            /></a>
+        </div>
+    </section>
+</main>
+
+<script src="./JavaScript/script.js"></script>
 </body>
 </html>
