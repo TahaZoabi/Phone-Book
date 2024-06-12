@@ -1,0 +1,104 @@
+<section id="confirm-popup" class="confirm-popup">
+  <div class="card">
+    <div class="header">
+      <p class="alert">Warning !!!!!</p>
+    </div>
+
+    <p class="message">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ea quo unde
+      vel adipisci blanditiis voluptates eum. Nam, cum minima?
+    </p>
+
+    <div class="actions">
+      <button id="cancelBtn" class="mark-as-read">Cancel</button>
+      <button id="confirmBtn" class="read">Confirm</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .confirm-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 320px;
+    border-width: 1px;
+    border-color: rgba(219, 234, 254, 1);
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 1rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 1rem;
+    gap: 1rem;
+  }
+
+  .alert {
+    font-weight: 600;
+    color: rgba(107, 114, 128, 1);
+  }
+
+  .message {
+    margin-top: 1rem;
+    color: rgba(107, 114, 128, 1);
+  }
+
+  .actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 1.5rem;
+  }
+
+  .actions button {
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .mark-as-read,
+  .read {
+    display: inline-block;
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  .read {
+    background-color: #ef4444;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .read:hover {
+    background-color: #cf4444;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .mark-as-read {
+    background-color: rgb(230, 231, 233);
+    color: rgba(107, 114, 128, 1);
+    transition: all 0.15s ease;
+  }
+
+  .mark-as-read:hover {
+    background-color: rgb(220, 221, 223);
+  }
+</style>

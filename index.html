@@ -1,62 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSS/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./CSS/style.css" />
     <title>Phone Book App</title>
-</head>
-<body>
-<main>
-    <section class="container">
-        <div>
-            <img id="logo" src="images/call.png" alt="logo"></div>
-        <h1>Phone Book App</h1>
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <div class="logo-header">
+          <div>
+            <img id="logo" src="images/call.png" alt="logo" />
+          </div>
+          <h1>Phone Book App</h1>
+        </div>
+        <span class="title">List of Contacts</span>
         <div class="contact-container">
-            <h2>List of Contacts</h2>
-            <button class="btn add-btn"> Add Contact</button>
+          <form class="search-form">
+            <button>
+              <svg
+                width="17"
+                height="16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-labelledby="search"
+              >
+                <path
+                  d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+                  stroke="currentColor"
+                  stroke-width="1.333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+            <input
+              class="input"
+              placeholder="John Doe"
+              required=""
+              type="text"
+            />
+            <button class="reset" type="reset">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </form>
+          <button id="showFormBtn" class="pushable">
+            <span class="edge"></span>
+            <span class="front">
+              New
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-plus"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+            </span>
+          </button>
         </div>
-        <div class="search">
-            <input type="text" placeholder="Search Contacts..." id="search-input"/>
-            <img id="search-btn" src="images/magnifying-glass.png" alt="search-icon">
-        </div>
 
-        <div class="contact-list">
-            <div class="contact-list-container">
-                <ul id="ul-pics">
-                    <li>
-                        <img class="contact-profile" src="images/user.png" alt="user-profile-pic">
-                    </li>
-                </ul>
-
-                <ul id="ul-names">
-                    <li>Taha Zoabi</li>
-                </ul>
-
-                <ul id="ul-numbers">
-                    <li>051-111-1111</li>
-                </ul>
-
-                <ul id="ul-btns">
-                    <li>
-                        <img src="images/edit.png" alt="edit-icon">
-                        <img src="images/trash.png" alt="delete-icon">
-                    </li>
-                </ul>
+        <div class="phone-contact-list">
+          <div class="user-card">
+            <img
+              src="https://images.unsplash.com/photo-1651010966858-8c2c7633f003?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="avatar"
+            />
+            <div class="info">
+              <span class="name">John Doe</span>
+              <span class="description">Lorem ipsum dolor.</span>
             </div>
+            <div class="status">
+              <div id="editBtn" class="edit">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-pencil"
+                >
+                  <path
+                    d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                  />
+                  <path d="m15 5 4 4" />
+                </svg>
+              </div>
+              <div id="deleteBtn" class="delete">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-trash-2"
+                >
+                  <path d="M3 6h18" />
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                  <line x1="10" x2="10" y1="11" y2="17" />
+                  <line x1="14" x2="14" y1="11" y2="17" />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="footer">
-            <footer>All Rights Reserved &#169; Taha Zoabi</footer>
-            <a href="https://github.com/TahaZoabi" target="_blank"
+          <footer>All Rights Reserved &#169; Taha Zoabi</footer>
+          <a href="https://github.com/TahaZoabi" target="_blank"
             ><img src="images/github.png" alt="github-icon"
-            /></a>
-            <a href="mailto:zoabi03@gmail.com"
+          /></a>
+          <a href="mailto:zoabi03@gmail.com"
             ><img src="images/gmail.png" alt="gmail-icon"
-            /></a>
+          /></a>
         </div>
-    </section>
-</main>
-<script src="JS/script.js"></script>
-</body>
+      </section>
+    </main>
+    <script src="JS/script.js"></script>
+  </body>
 </html>
