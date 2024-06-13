@@ -20,9 +20,6 @@ main {
   align-items: center;
 }
 
-img {
-  width: 50px;
-}
 
 .container {
   display: flex;
@@ -57,24 +54,6 @@ img {
   gap: 1rem;
 }
 
-.btn {
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 0.75rem;
-  cursor: pointer;
-  background-color: #6a62d7;
-  color: #ffffff;
-}
-
-.add-btn {
-  padding: 0.5rem 1rem;
-}
-
-.btn:hover {
-  background-color: #888df0;
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
-}
 
 h1,
 h2,
@@ -82,29 +61,6 @@ h3 {
   color: #0088d2;
 }
 
-.contact-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.contact-list-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 0.7rem;
-  border: solid 1px #0088d2;
-  border-radius: 1rem;
-  width: 100%;
-  margin-bottom: 0.5rem;
-  background: #2b2b2b;
-}
-
-.contact-list-container:hover {
-  background: #3c3c3c;
-}
 
 .title {
   font-size: 24px;
@@ -131,29 +87,10 @@ h3 {
   transition: transform 0.3s ease;
 }
 
-li {
-  text-align: center;
-  list-style: none;
-  margin: 0.75rem 0;
-  font-size: 1rem;
-  color: #ffffff;
-}
-
-#ul-btns li img {
-  width: 30px;
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-#ul-btns li img:hover {
-  transform: scale(1.2);
-  transition: transform 0.3s ease;
-}
-
 .pushable {
   position: relative;
   background: transparent;
-  padding: 0px;
+  padding: 0;
   border: none;
   cursor: pointer;
   outline-offset: 4px;
@@ -188,14 +125,12 @@ li {
   background: hsl(199, 91%, 58%);
   padding: 8px 12px;
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-size: 0.6rem;
   transform: translateY(-2px);
-  /* transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1); */
+
 }
 
 .front svg {
@@ -315,7 +250,6 @@ li {
   align-items: center;
   padding-inline: 0.8em;
   border-radius: 0.5rem;
-  transition: border-radius 0.5s ease;
   background: #fff;
   border: 2px solid #0000;
   transition: all 150ms ease-in-out;
@@ -409,85 +343,5 @@ li {
   .user-card .status div svg {
     width: 24px;
     height: 24px;
-  }
-}
-
-@media (min-width: 640px) {
-  .contact-list-container {
-    max-width: 100%;
-    justify-content: space-around;
-  }
-
-  img {
-    width: 40px;
-  }
-
-  li {
-    font-size: 1.2rem;
-  }
-
-  #ul-btns li img {
-    width: 30px;
-    margin-left: 8px;
-  }
-}
-
-@media (min-width: 768px) {
-  .contact-list-container {
-    max-width: 90%;
-    justify-content: space-around;
-  }
-
-  img {
-    width: 55px;
-  }
-
-  li {
-    font-size: 1.6rem;
-  }
-
-  #ul-btns li img {
-    width: 40px;
-    margin-left: 12px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .contact-list-container {
-    max-width: 85%;
-    justify-content: space-around;
-  }
-
-  img {
-    width: 65px;
-  }
-
-  li {
-    font-size: 1.8rem;
-  }
-
-  #ul-btns li img {
-    width: 45px;
-    margin-left: 10px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .contact-list-container {
-    max-width: 80%;
-    justify-content: space-around;
-  }
-
-  img {
-    width: 75px;
-  }
-
-  li {
-    font-size: 2rem;
-  }
-
-  #ul-btns li img {
-    width: 50px;
-    margin-left: 15px;
   }
 }
