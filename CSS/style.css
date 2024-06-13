@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   background: #1b1b1f;
 }
@@ -19,7 +19,6 @@ main {
   flex-direction: column;
   align-items: center;
 }
-
 
 .container {
   display: flex;
@@ -54,13 +53,11 @@ main {
   gap: 1rem;
 }
 
-
 h1,
 h2,
 h3 {
   color: #0088d2;
 }
-
 
 .title {
   font-size: 24px;
@@ -130,7 +127,6 @@ h3 {
   letter-spacing: 1.5px;
   font-size: 0.6rem;
   transform: translateY(-2px);
-
 }
 
 .front svg {
