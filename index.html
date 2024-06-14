@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--  link css pages-->
     <link rel="stylesheet" href="./CSS/style.css" />
     <link rel="stylesheet" href="./CSS/modal.css" />
     <link rel="stylesheet" href="./CSS/confirm.css" />
@@ -10,7 +11,6 @@
   </head>
   <body>
     <!-- Main Page-->
-
     <main>
       <section class="container">
         <div class="logo-header">
@@ -22,7 +22,7 @@
         <span class="title">List of Contacts</span>
         <div class="contact-container">
           <form class="search-form">
-            <button>
+            <button type="button" aria-label="Search">
               <svg
                 width="17"
                 height="16"
@@ -48,7 +48,7 @@
                 type="text"
               />
             </label>
-            <button class="reset" type="reset">
+            <button type="reset" class="reset">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6"
@@ -65,7 +65,7 @@
               </svg>
             </button>
           </form>
-          <button id="showFormBtn" class="pushable">
+          <button id="showFormBtn" class="pushable" type="button">
             <span class="edge"></span>
             <span class="front">
               New
@@ -80,6 +80,8 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 class="lucide lucide-plus"
+                role="img"
+                aria-label="Add new contact"
               >
                 <path d="M5 12h14" />
                 <path d="M12 5v14" />
@@ -100,7 +102,7 @@
               <span class="description">Lorem ipsum dolor.</span>
             </div>
             <div class="status">
-              <div class="edit">
+              <div class="edit" role="button" aria-label="Edit contact">
                 <svg
                   id="editBtn"
                   xmlns="http://www.w3.org/2000/svg"
@@ -113,6 +115,8 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   class="lucide lucide-pencil"
+                  role="img"
+                  aria-label="Edit"
                 >
                   <path
                     d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
@@ -120,7 +124,7 @@
                   <path d="m15 5 4 4" />
                 </svg>
               </div>
-              <div class="delete">
+              <div class="delete" role="button" aria-label="Delete contact">
                 <svg
                   id="deleteBtn"
                   xmlns="http://www.w3.org/2000/svg"
@@ -133,6 +137,8 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   class="lucide lucide-trash-2"
+                  role="img"
+                  aria-label="Delete"
                 >
                   <path d="M3 6h18" />
                   <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
@@ -146,14 +152,12 @@
         </div>
 
         <!-- Modal Form-->
-
         <section class="contact-modal">
           <div id="form-container" class="card">
             <div class="header">
               <p class="alert">New Contact</p>
             </div>
-
-            <form id="contactForm" class="">
+            <form id="contactForm">
               <div class="form-label">
                 <label class="label-type" for="name">Name</label>
                 <div class="error"></div>
@@ -190,7 +194,6 @@
               <div class="form-property">
                 <label class="label-type">Address</label>
                 <div class="error"></div>
-                <label for="address"></label>
                 <input
                   type="text"
                   class="new-contact-input"
@@ -199,26 +202,28 @@
                 />
               </div>
               <div class="actions">
-                <button class="mark-as-read cancelBtn">Cancel</button>
-                <button class="read confirmBtn">Confirm</button>
+                <button type="button" class="mark-as-read cancelBtn">
+                  Cancel
+                </button>
+                <button id="saveBtn" type="button" class="read confirmBtn">
+                  Confirm
+                </button>
               </div>
             </form>
           </div>
         </section>
 
-        <!--  Confirm Modal-->
-
+        <!-- Confirm Modal-->
         <section id="confirm-popup" class="confirm-popup">
           <div class="card">
             <div class="header">
               <p class="alert-Warning">Confirmation Required</p>
             </div>
-
             <p class="message">Do you want to proceed with the changes?</p>
-
             <div class="actions">
               <button
                 id="confirm-cancelBtn"
+                type="button"
                 class="cancel-btn"
                 aria-label="Cancel"
               >
@@ -226,6 +231,7 @@
               </button>
               <button
                 id="confirm-confirmBtn"
+                type="button"
                 class="confirm-btn"
                 aria-label="Confirm"
               >
@@ -235,13 +241,14 @@
           </div>
         </section>
 
+        <!-- footer-->
         <div class="footer">
           <footer>All Rights Reserved &#169; Taha Zoabi</footer>
           <a href="https://github.com/TahaZoabi" target="_blank">
-            <img src="images/github.png" alt="github-icon"
+            <img src="images/github.png" alt="github-icon" aria-label="Github"
           /></a>
-          <a href="mailto:zoabi03@gmail.com">
-            <img src="images/gmail.png" alt="gmail-icon"
+          <a href="mailto:zoabi03@gmail.com" aria-label="Gmail">
+            <img src="images/gmail.png" alt="gmail-icon" aria-label="Gmail"
           /></a>
         </div>
       </section>
