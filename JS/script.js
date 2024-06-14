@@ -19,7 +19,8 @@ const contact = {
   Address: "",
   EmailAddress: "",
 };
-let contacts = [
+
+const contacts = [
   {
     Name: "John Smith",
     PhoneNumber: "555 - 123 - 4567",
@@ -72,7 +73,7 @@ contacts.map((person, index) => {
 
   const userDescription = document.createElement("span");
   userDescription.classList.add("description");
-  userDescription.textContent = person.PhoneNumber;
+  userDescription.textContent = person.Address;
 
   // Append content elements to userInfo
   userInfo.appendChild(userName);
@@ -91,7 +92,7 @@ contacts.map((person, index) => {
       <path d="m15 5 4 4" />
     </svg>`;
   editButton.addEventListener("click", () => {
-    openModal(); // You may want to pass person details to populate the form for editing
+    openModal();
   });
 
   // Append delete button
@@ -106,7 +107,7 @@ contacts.map((person, index) => {
       <line x1="14" x2="14" y1="11" y2="17" />
     </svg>`;
   deleteButton.addEventListener("click", () => {
-    openConfirmModal(); // You may want to pass person details to confirm deletion
+    openConfirmModal();
   });
 
   // Append action buttons to userActions
