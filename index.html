@@ -100,8 +100,9 @@
               <span class="description">Lorem ipsum dolor.</span>
             </div>
             <div class="status">
-              <div id="editBtn" class="edit">
+              <div class="edit">
                 <svg
+                  id="editBtn"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -119,8 +120,9 @@
                   <path d="m15 5 4 4" />
                 </svg>
               </div>
-              <div id="deleteBtn" class="delete">
+              <div class="delete">
                 <svg
+                  id="deleteBtn"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -215,10 +217,18 @@
             <p class="message">Do you want to proceed with the changes?</p>
 
             <div class="actions">
-              <button id="cancelBtn" class="cancel-btn" aria-label="Cancel">
+              <button
+                id="confirm-cancelBtn"
+                class="cancel-btn"
+                aria-label="Cancel"
+              >
                 Cancel
               </button>
-              <button id="confirmBtn" class="confirm-btn" aria-label="Confirm">
+              <button
+                id="confirm-confirmBtn"
+                class="confirm-btn"
+                aria-label="Confirm"
+              >
                 Confirm
               </button>
             </div>
