@@ -127,3 +127,11 @@ input {
   color: #ffffff;
   outline: none;
 }
+#search-input {
+  color: black;
+}
+
+.error {
+  color: #cf4444;
+  font-size: 0.75rem;
+}

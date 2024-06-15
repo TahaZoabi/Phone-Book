@@ -298,6 +298,14 @@ h3 {
   margin-top: 3px;
 }
 
+#empty-list {
+  display: none;
+}
+#empty-list h3 {
+  color: #cf4444;
+  font-size: 1rem;
+}
+
 /* Media queries for adjusting styles for different screen sizes */
 @media (min-width: 450px) {
   .container {
@@ -346,5 +354,8 @@ h3 {
   .user-card .status div svg {
     width: 24px;
     height: 24px;
+  }
+  #empty-list h3 {
+    font-size: 1.5rem;
   }
 }

@@ -46,6 +46,7 @@
                 placeholder="Search Contacts..."
                 required=""
                 type="text"
+                id="search-input"
               />
             </label>
             <button type="reset" class="reset">
@@ -56,6 +57,7 @@
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 stroke-width="2"
+                id="search-btn"
               >
                 <path
                   stroke-linecap="round"
@@ -88,6 +90,13 @@
               </svg>
             </span>
           </button>
+        </div>
+
+        <div id="empty-list">
+          <h3>
+            Your Contact List is Empty, <br />
+            Please add some Contacts
+          </h3>
         </div>
 
         <div class="phone-contact-list"></div>
@@ -165,7 +174,9 @@
             <div class="header">
               <p class="alert-Warning">Confirmation Required</p>
             </div>
-            <p class="message">Do you want to proceed with the changes?</p>
+            <p id="confirm-text" class="message">
+              Do you want to proceed with the changes?
+            </p>
             <div class="actions">
               <button
                 id="confirm-cancelBtn"

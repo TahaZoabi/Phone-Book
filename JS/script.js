@@ -5,19 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const showFormBtn = document.getElementById("showFormBtn");
   const hideFormBtn = document.querySelector(".cancelBtn");
   const contactForm = document.querySelector(".contact-modal");
-  const editBtn = document.getElementById("editBtn");
-  const deleteBtn = document.getElementById("deleteBtn");
   const saveConfirmBtn = document.getElementById("saveBtn");
   const confirmForm = document.getElementById("confirm-popup");
   const cancelBtn = document.getElementById("confirm-cancelBtn");
   const confirmBtn = document.getElementById("confirm-confirmBtn");
   const deleteAllBtn = document.getElementById("delete-all");
-
+  const confirmText = document.getElementById("confirm-text");
   const nameInput = document.getElementById("name");
   const phoneInput = document.getElementById("phone");
   const addressInput = document.getElementById("address");
   const emailInput = document.getElementById("email");
 
+  const searchInput = document.getElementById("search-input");
+  let contactIndex = -1;
   const contactsList = document.querySelector(".phone-contact-list");
 
   // Initial contacts array
@@ -54,12 +54,10 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  // create names array
-  let contactNames = [];
-  // add all contacts name to the names array
-  contacts.forEach((person) => contactNames.push(person.Name));
+  // Create names array
+  let contactNames = contacts.map((person) => person.Name);
 
-  // sort the contacts from A-Z
+  // Sort the contacts array by name
   function sortContacts() {
     contacts.sort((a, b) => a.Name.localeCompare(b.Name));
   }
@@ -72,27 +70,57 @@ document.addEventListener("DOMContentLoaded", function () {
       Address: addressInput.value.trim(),
       Email: emailInput.value.trim(),
     };
-    contacts.push(contact); // add contact
-    contactNames.push(contact.Name); // add contact name to the names array
-    refreshContactList(); // Update the UI
+
+    // Check if the contact name already exists
+    const nameExists = contactNames.some(
+      (name, index) =>
+        name.toLowerCase() === contact.Name.toLowerCase() &&
+        index !== contactIndex,
+    );
+
+    if (contactIndex === -1) {
+      if (nameExists) {
+        setError(nameInput, "Contact name already exists in the book");
+        return;
+      }
+      contacts.push(contact);
+      contactNames.push(contact.Name);
+      clearInputFields();
+    } else {
+      if (nameExists) {
+        setError(nameInput, "Contact name already exists in the book");
+        return;
+      }
+      contacts[contactIndex] = contact;
+      contactIndex = -1;
+    }
+
+    // Close modal
+    closeModal();
+    sortContacts();
+    displayContacts();
   }
 
   // Function to delete all contacts
   function deleteAllContacts() {
     contacts = [];
     contactNames = [];
-    refreshContactList(); // Update the UI
+    contactsList.innerHTML = ""; // Clear the contacts list
+    closeConfirmModal();
+    displayEmptyListMessage();
   }
 
   // Event listener for delete all button
   deleteAllBtn.addEventListener("click", function (event) {
     event.preventDefault();
-    openConfirmModal();
+    confirmText.textContent = "Are you sure you want to delete all contacts?";
+    openConfirmModal(deleteAllContacts);
   });
 
-  // Refresh the contacts list UI
-  function refreshContactList() {
-    contacts.forEach((person) => {
+  // Function to refresh the contacts list UI
+  function displayContacts(filteredContacts = contacts) {
+    contactsList.innerHTML = ""; // Clear existing list
+    filteredContacts.forEach((person) => {
       const userContact = document.createElement("div");
       userContact.classList.add("user-card");
 
@@ -110,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const userDescription = document.createElement("span");
       userDescription.classList.add("description");
-      userDescription.textContent = "Lorem ipsum dolor.";
+      userDescription.textContent = person.PhoneNumber;
 
       userInfo.appendChild(userName);
       userInfo.appendChild(userDescription);
@@ -121,26 +149,27 @@ document.addEventListener("DOMContentLoaded", function () {
       const editButton = document.createElement("div");
       editButton.classList.add("edit");
       editButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil" role="img" aria-label="Edit">
-                    <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                    <path d="m15 5 4 4" />
-                </svg>`;
-      editButton.addEventListener("click", () => {
-        openModal();
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
+          <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+          <path d="m15 5 4 4" />
+        </svg>`;
+      editButton.addEventListener("click", function () {
+        editContact(person.Name);
       });
 
       const deleteButton = document.createElement("div");
       deleteButton.classList.add("delete");
       deleteButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2" role="img" aria-label="Delete">
-                    <path d="M3 6h18" />
-                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                    <line x1="10" x2="10" y1="11" y2="17" />
-                    <line x1="14" x2="14" y1="11" y2="17" />
-                </svg>`;
-      deleteButton.addEventListener("click", () => {
-        openConfirmModal();
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
+          <path d="M3 6h18" />
+          <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+          <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+          <line x1="10" x2="10" y1="11" y2="17" />
+          <line x1="14" x2="14" y1="11" y2="17" />
+        </svg>`;
+      deleteButton.addEventListener("click", function () {
+        confirmText.textContent = `Are you sure you want to delete ${person.Name}?`;
+        openConfirmModal(() => deleteContact(person));
       });
 
       userActions.appendChild(editButton);
@@ -152,6 +181,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
       contactsList.appendChild(userContact);
     });
+
+    displayEmptyListMessage();
+  }
+
+  // Function to display or hide empty list message
+  function displayEmptyListMessage() {
+    const emptyListMessage = document.getElementById("empty-list");
+    if (contacts.length === 0) {
+      emptyListMessage.style.display = "block";
+    } else {
+      emptyListMessage.style.display = "none";
+    }
+  }
+
+  // Function to edit a contact
+  function editContact(name) {
+    contactIndex = contacts.findIndex((contact) => contact.Name === name);
+    const contact = contacts[contactIndex];
+    nameInput.value = contact.Name;
+    phoneInput.value = contact.PhoneNumber;
+    addressInput.value = contact.Address;
+    emailInput.value = contact.Email;
+    openModal();
+  }
+
+  // Function to delete a contact
+  function deleteContact(contact) {
+    const index = contacts.indexOf(contact);
+    if (index !== -1) {
+      contacts.splice(index, 1);
+      displayContacts();
+    }
   }
 
   // Function to open and close the contact modal
@@ -161,39 +222,102 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function closeModal() {
     contactForm.style.display = "none";
+    clearInputFields(); // Clear input fields on close
   }
 
   // Function to open and close the confirmation modal
-  function openConfirmModal() {
+  function openConfirmModal(callback) {
     confirmForm.style.display = "flex";
+    confirmBtn.addEventListener("click", function handler() {
+      callback();
+      confirmBtn.removeEventListener("click", handler); // Remove the event listener after use
+      closeConfirmModal();
+    });
   }
 
   function closeConfirmModal() {
     confirmForm.style.display = "none";
   }
 
-  // Function to handle actions
-  function actions() {
-    console.log("Action performed");
-    closeModal();
-    closeConfirmModal();
+  // Function to clear input fields
+  function clearInputFields() {
+    nameInput.value = "";
+    phoneInput.value = "";
+    addressInput.value = "";
+    emailInput.value = "";
+    clearError(nameInput);
+    clearError(phoneInput);
   }
 
-  // Event listeners
-  saveConfirmBtn.addEventListener("click", actions);
-  cancelBtn.addEventListener("click", closeConfirmModal);
-  confirmBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    actions();
+  // Function to filter contacts by name
+  function filterContacts(searchedName) {
+    const filteredContacts = contacts.filter((contact) =>
+      contact.Name.toLowerCase().includes(searchedName.toLowerCase()),
+    );
+    displayContacts(filteredContacts);
+  }
+
+  // Event listener for search input field
+  searchInput.addEventListener("input", function () {
+    filterContacts(searchInput.value);
   });
 
-  showFormBtn.addEventListener("click", openModal);
-  hideFormBtn.addEventListener("click", function (event) {
+  // Event listener for save button in the contact modal
+  saveConfirmBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (validateInputs()) {
+      addOrUpdateContact();
+    }
+  });
+
+  // Event listener for cancel button in the contact modal
+  hideFormBtn.addEventListener("click", function () {
     closeModal();
-    closeConfirmModal();
+    closeConfirmModal(); // Ensure confirmation modal is also closed if open
   });
 
-  // Initial load of contacts
+  // Event listener for cancel button in the confirmation modal
+  cancelBtn.addEventListener("click", closeConfirmModal);
+
+  function setError(element, message) {
+    const errorDisplay = element.parentElement.querySelector(".error");
+    if (errorDisplay) {
+      errorDisplay.textContent = message;
+    }
+    element.classList.add("error");
+  }
+
+  // Function to clear error message for a specific input field
+  function clearError(element) {
+    const errorDisplay = element.parentElement.querySelector(".error");
+    if (errorDisplay) {
+      errorDisplay.textContent = "";
+    }
+    element.classList.remove("error");
+  }
+
+  function validateInputs() {
+    clearError(nameInput);
+    clearError(phoneInput);
+
+    if (nameInput.value.trim() === "") {
+      setError(nameInput, "Contact name is required");
+      return false;
+    }
+    if (phoneInput.value.trim() === "") {
+      setError(phoneInput, "Contact phone number is required");
+      return false;
+    }
+
+    return true;
+  }
+
+  // Event listener for show form button to open modal
+  showFormBtn.addEventListener("click", function () {
+    openModal();
+  });
+
+  // Initial sort and display of contacts
   sortContacts();
-  refreshContactList();
+  displayContacts();
 });
