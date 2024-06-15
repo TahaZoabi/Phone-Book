@@ -132,6 +132,10 @@ h3 {
   transform: translateY(-2px);
 }
 
+#delete-all .front {
+  padding: 1rem;
+}
+
 .front svg {
   width: 18px;
   height: 18px;
