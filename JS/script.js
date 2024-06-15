@@ -54,6 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
+  // create names array
+  let contactNames = [];
+  // add all contacts name to the names array
+  contacts.forEach((person) => contactNames.push(person.Name));
+
+  // sort the contacts from A-Z
+  function sortContacts() {
+    contacts.sort((a, b) => a.Name.localeCompare(b.Name));
+  }
+
   // Function to add or update a contact
   function addOrUpdateContact() {
     const contact = {
@@ -62,13 +72,15 @@ document.addEventListener("DOMContentLoaded", function () {
       Address: addressInput.value.trim(),
       Email: emailInput.value.trim(),
     };
-    contacts.push(contact);
+    contacts.push(contact); // add contact
+    contactNames.push(contact.Name); // add contact name to the names array
     refreshContactList(); // Update the UI
   }
 
   // Function to delete all contacts
   function deleteAllContacts() {
     contacts = [];
+    contactNames = [];
     refreshContactList(); // Update the UI
   }
 
@@ -80,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Refresh the contacts list UI
   function refreshContactList() {
-    contactsList.innerHTML = ""; // Clear existing list
     contacts.forEach((person) => {
       const userContact = document.createElement("div");
       userContact.classList.add("user-card");
@@ -183,5 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Initial load of contacts
+  sortContacts();
   refreshContactList();
 });
