@@ -76,15 +76,22 @@ h3 {
   margin-top: auto;
 }
 
-.footer img {
+.footer-text {
+  font-size: 14px;
+}
+
+.footer svg {
   width: 30px;
   margin-top: 1rem;
   margin-left: 0.35rem;
+  border-radius: 50%;
+  color: var(--blue);
 }
 
-.footer img:hover {
+.footer svg:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
+  color: var(--secondBlue);
 }
 
 .pushable {
@@ -179,7 +186,13 @@ h3 {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/*
 .user-card:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+*/
+
+.hover {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -357,5 +370,8 @@ h3 {
   }
   #empty-list h3 {
     font-size: 1.5rem;
+  }
+  .footer-text {
+    font-size: 1rem;
   }
 }

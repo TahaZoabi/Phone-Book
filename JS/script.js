@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let contactIndex = -1;
   const contactsList = document.querySelector(".phone-contact-list");
 
-  // Initial contacts array
+  // create contacts array of objects
   let contacts = [
     {
       Name: "John Smith",
@@ -78,22 +78,23 @@ document.addEventListener("DOMContentLoaded", function () {
         index !== contactIndex,
     );
 
+    if (nameExists) {
+      setError(nameInput, "Contact name already exists in the book");
+      return;
+    }
+
     if (contactIndex === -1) {
-      if (nameExists) {
-        setError(nameInput, "Contact name already exists in the book");
-        return;
-      }
+      // Add new contact
       contacts.push(contact);
       contactNames.push(contact.Name);
       clearInputFields();
     } else {
-      if (nameExists) {
-        setError(nameInput, "Contact name already exists in the book");
-        return;
-      }
+      // Update existing contact
       contacts[contactIndex] = contact;
-      contactIndex = -1;
     }
+
+    // Reset contactIndex
+    contactIndex = -1;
 
     // Close modal
     closeModal();
@@ -119,11 +120,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to refresh the contacts list UI
   function displayContacts(filteredContacts = contacts) {
-    contactsList.innerHTML = ""; // Clear existing list
+    contactsList.innerHTML = "";
     filteredContacts.forEach((person) => {
       const userContact = document.createElement("div");
       userContact.classList.add("user-card");
 
+      // mouse over to add the hover background color change
+      userContact.addEventListener("mouseover", () => {
+        userContact.classList.add("hover");
+      });
+
+      userContact.addEventListener("mouseout", () => {
+        userContact.classList.remove("hover");
+      });
       const userPic = document.createElement("img");
       userPic.classList.add("user-pic");
       userPic.src = "./images/user.png"; // Placeholder image source
@@ -273,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Event listener for cancel button in the contact modal
   hideFormBtn.addEventListener("click", function () {
     closeModal();
-    closeConfirmModal(); // Ensure confirmation modal is also closed if open
+    closeConfirmModal();
   });
 
   // Event listener for cancel button in the confirmation modal
