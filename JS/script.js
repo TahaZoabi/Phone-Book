@@ -319,8 +319,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (phoneInput.value.trim() === "") {
       setError(phoneInput, "Contact phone number is required");
       return false;
-    } else if (phoneInput.value.trim().length !== 10) {
-      setError(phoneInput, "Phone number must be 10 digits");
+    } else if (phoneInput.value.trim().length < 10) {
+      setError(phoneInput, "Phone number must be at least 10 digits");
       return false;
     }
 
