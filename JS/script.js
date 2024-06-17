@@ -289,11 +289,13 @@ document.addEventListener("DOMContentLoaded", function () {
   cancelBtn.addEventListener("click", closeConfirmModal);
 
   function setError(element, message) {
+    const errorDiv = document.createElement("div");
     const errorDisplay = element.parentElement.querySelector(".error");
+    errorDisplay.appendChild(errorDiv);
     if (errorDisplay) {
       errorDisplay.textContent = message;
     }
-    element.classList.add("error");
+    errorDiv.classList.add("error");
   }
 
   // Function to clear error message for a specific input field
@@ -308,6 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function validateInputs() {
     clearError(nameInput);
     clearError(phoneInput);
+    clearError(emailInput);
 
     if (nameInput.value.trim() === "") {
       setError(nameInput, "Contact name is required");
@@ -315,6 +318,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (phoneInput.value.trim() === "") {
       setError(phoneInput, "Contact phone number is required");
+      return false;
+    } else if (phoneInput.value.trim().length !== 10) {
+      setError(phoneInput, "Phone number must be 10 digits");
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (
+      emailInput.value.trim() !== "" &&
+      !emailRegex.test(emailInput.value.trim())
+    ) {
+      setError(emailInput, "Invalid email format");
       return false;
     }
 
