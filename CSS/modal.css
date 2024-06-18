@@ -86,6 +86,7 @@ body {
   text-decoration: none;
   border: none;
   cursor: pointer;
+  font-family: "Inter", sans-serif;
 }
 
 .mark-as-read,

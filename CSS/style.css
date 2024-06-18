@@ -6,6 +6,10 @@
   box-sizing: border-box;
   transition: all 150ms ease-in-out;
 }
+body {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+}
 :root {
   --blue: #3b82f6;
   --secondBlue: #0ea5e9;
@@ -104,6 +108,7 @@ h3 {
   outline-color: deeppink;
   transition: filter 250ms;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-family: "Inter", sans-serif;
 }
 
 .edge {
@@ -280,6 +285,7 @@ h3 {
   padding-inline: 0.5em;
   padding-block: 0.7em;
   border: none;
+  font-family: "Inter", sans-serif;
 }
 
 .search-form:focus-within {
