@@ -39,6 +39,7 @@ body {
 .alert-Warning {
   font-weight: 600;
   color: #ffffff;
+  font-size: 1rem;
 }
 
 /************
@@ -94,6 +95,23 @@ body {
   background-color: rgb(220, 221, 223);
 }
 
+#confirm-text {
+  font-size: 0.8rem;
+}
+
 .confirm-btn:hover {
   background-color: #cf4444;
+}
+@media (min-width: 815px) {
+  .alert-Warning {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 450px) {
+  .alert-Warning {
+    font-size: 1.4rem;
+  }
+  #confirm-text {
+    font-size: 1rem;
+  }
 }
