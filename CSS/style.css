@@ -328,10 +328,20 @@ h3 {
 }
 
 .rotate-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
   color: var(--blue);
   cursor: pointer;
-  padding: 0.5rem;
   border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.rotate-btn svg {
+  width: 60%;
+  height: 60%;
 }
 
 .rotate-btn:hover {
@@ -339,6 +349,7 @@ h3 {
   background-color: #fff1;
   transform: scale(1.2);
   transition: transform 0.3s ease-in-out;
+  border-radius: 50%;
 }
 .rotate {
   animation: rotate 7s linear infinite;
