@@ -319,6 +319,33 @@ h3 {
   font-size: 1rem;
 }
 
+.rotate-btn {
+  color: var(--blue);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.rotate-btn:hover {
+  color: var(--secondBlue);
+  background-color: #fff1;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+}
+.rotate {
+  animation: rotate 7s linear infinite; /* Increased from 3.5s to 7s */
+  transition: transform 1s ease-in-out;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Media queries for adjusting styles for different screen sizes */
 @media (min-width: 450px) {
   .container {

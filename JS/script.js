@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const phoneInput = document.getElementById("phone");
   const addressInput = document.getElementById("address");
   const emailInput = document.getElementById("email");
-
+  const mainDoc = document.querySelector("main");
+  const rotationBtn = document.querySelector(".rotate-btn");
   const searchInput = document.getElementById("search-input");
   let contactIndex = -1;
   const contactsList = document.querySelector(".phone-contact-list");
@@ -324,6 +325,18 @@ document.addEventListener("DOMContentLoaded", function () {
   // Event listener for show form button to open modal
   showFormBtn.addEventListener("click", function () {
     openModal();
+  });
+
+  rotationBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    // Check if the "rotate" class is already added
+    if (mainDoc.classList.contains("rotate")) {
+      // If yes, remove the "rotate" class to return to the original state
+      mainDoc.classList.remove("rotate");
+    } else {
+      // If not, add the "rotate" class to apply the rotation
+      mainDoc.classList.add("rotate");
+    }
   });
 
   // Initial sort and display of contacts
