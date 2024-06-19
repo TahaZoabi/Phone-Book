@@ -13,6 +13,8 @@ body {
 :root {
   --blue: #3b82f6;
   --secondBlue: #0ea5e9;
+  --primary-blue: #007bff; /* A vibrant blue */
+  --secondary-blue: #0056b3; /* A darker shade of blue for contrast */
 }
 body {
   font-family: "Inter", sans-serif;
@@ -339,8 +341,7 @@ h3 {
   transition: transform 0.3s ease-in-out;
 }
 .rotate {
-  animation: rotate 7s linear infinite; /* Increased from 3.5s to 7s */
-  transition: transform 1s ease-in-out;
+  animation: rotate 7s linear infinite;
 }
 
 @keyframes rotate {
@@ -350,6 +351,24 @@ h3 {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Targeting WebKit browsers */
+body::-webkit-scrollbar {
+  width: 12px; /* Slightly wider scrollbar for better grip */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white track */
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--primary-blue); /* Vibrant blue for the thumb */
+  border-radius: 10px; /* Rounded corners for a softer look */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-blue); /* Darker blue on hover for depth */
 }
 
 /* Media queries for adjusting styles for different screen sizes */

@@ -24,12 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // create contacts array of objects
   let contacts = [
     {
-      Name: "John Smith",
-      PhoneNumber: "0549876543",
-      Address: "123 Main Street, Anytown, USA",
-      Email: "john.smith@example.com",
-    },
-    {
       Name: "Emily Johnson",
       PhoneNumber: "0543210987",
       Address: "456 Oak Avenue, Anycity, USA",
