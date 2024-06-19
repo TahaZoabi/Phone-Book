@@ -25,31 +25,31 @@ document.addEventListener("DOMContentLoaded", function () {
   let contacts = [
     {
       Name: "John Smith",
-      PhoneNumber: "555-123-4567",
+      PhoneNumber: "0549876543",
       Address: "123 Main Street, Anytown, USA",
       Email: "john.smith@example.com",
     },
     {
       Name: "Emily Johnson",
-      PhoneNumber: "555-987-6543",
+      PhoneNumber: "0543210987",
       Address: "456 Oak Avenue, Anycity, USA",
       Email: "emily.johnson@example.com",
     },
     {
       Name: "Michael Brown",
-      PhoneNumber: "555-555-5555",
+      PhoneNumber: "0505551234",
       Address: "789 Elm Street, Anystate, USA",
       Email: "michael.brown@example.com",
     },
     {
       Name: "Sarah Davis",
-      PhoneNumber: "555-222-3333",
+      PhoneNumber: "0524478714",
       Address: "321 Pine Road, Anyvillage, USA",
       Email: "sarah.davis@example.com",
     },
     {
       Name: "Christopher Wilson",
-      PhoneNumber: "555-444-7777",
+      PhoneNumber: "0544825478",
       Address: "654 Maple Lane, Anysuburb, USA",
       Email: "christopher.wilson@example.com",
     },
@@ -73,9 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Check if the contact name already exists
-    const nameExists = contactNames.some(
-      (name, index) =>
-        name.toLowerCase() === contact.Name.toLowerCase() &&
+    const nameExists = contacts.some(
+      (existingContact, index) =>
+        existingContact.Name.toLowerCase() === contact.Name.toLowerCase() &&
         index !== contactIndex,
     );
 
@@ -88,16 +88,14 @@ document.addEventListener("DOMContentLoaded", function () {
       // Add new contact
       contacts.push(contact);
       contactNames.push(contact.Name);
-      clearInputFields();
     } else {
       // Update existing contact
       contacts[contactIndex] = contact;
+      contactNames[contactIndex] = contact.Name;
     }
 
-    // Reset contactIndex
+    clearInputFields();
     contactIndex = -1;
-
-    // Close modal
     closeModal();
     sortContacts();
     displayContacts();
@@ -290,11 +288,13 @@ document.addEventListener("DOMContentLoaded", function () {
   cancelBtn.addEventListener("click", closeConfirmModal);
 
   function setError(element, message) {
+    const errorDiv = document.createElement("div");
     const errorDisplay = element.parentElement.querySelector(".error");
+    errorDisplay.appendChild(errorDiv);
     if (errorDisplay) {
       errorDisplay.textContent = message;
     }
-    element.classList.add("error");
+    errorDiv.classList.add("error");
   }
 
   // Function to clear error message for a specific input field
@@ -309,13 +309,37 @@ document.addEventListener("DOMContentLoaded", function () {
   function validateInputs() {
     clearError(nameInput);
     clearError(phoneInput);
+    clearError(emailInput);
 
     if (nameInput.value.trim() === "") {
       setError(nameInput, "Contact name is required");
       return false;
     }
+
     if (phoneInput.value.trim() === "") {
       setError(phoneInput, "Contact phone number is required");
+      return false;
+    }
+
+    // Check if the phone number contains only digits
+    const phoneValue = phoneInput.value.trim();
+    if (!/^\d+$/.test(phoneValue)) {
+      setError(phoneInput, "Phone number should only contain digits");
+      return false;
+    }
+
+    // Check if the phone number has at least 10 digits
+    if (phoneValue.length !== 10) {
+      setError(phoneInput, "Phone number must be 10 digits");
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (
+      emailInput.value.trim() !== "" &&
+      !emailRegex.test(emailInput.value.trim())
+    ) {
+      setError(emailInput, "Invalid email format");
       return false;
     }
 
