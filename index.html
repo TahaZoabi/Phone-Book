@@ -1,29 +1,39 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--  link css pages-->
+
+    <!-- CSS files -->
     <link rel="stylesheet" href="./CSS/style.css" />
     <link rel="stylesheet" href="./CSS/modal.css" />
     <link rel="stylesheet" href="./CSS/confirm.css" />
-    <!--   link icon-->
+
+    <!-- Favicon -->
     <link rel="shortcut icon" href="./images/call.png" type="image/x-icon" />
+
     <title>Phone Book App</title>
   </head>
   <body>
     <!-- Main Page-->
     <main>
       <section class="container">
+        <!-- Logo and title -->
         <div class="logo-header">
           <div>
             <img id="logo" src="images/call.png" alt="logo" />
           </div>
           <h1>Phone Book App</h1>
         </div>
+
+        <!-- Title for contact list -->
         <span class="title">List of Contacts</span>
+
+        <!-- Search form -->
         <div class="contact-container">
           <form class="search-form">
+            <!-- Search button with SVG icon -->
             <button type="button" aria-label="Search">
               <svg
                 width="17"
@@ -43,6 +53,7 @@
               </svg>
             </button>
 
+            <!-- Input field for searching contacts -->
             <input
               class="input"
               placeholder="Search Contacts..."
@@ -51,6 +62,7 @@
               id="search-input"
             />
 
+            <!-- Reset button with SVG icon -->
             <button type="reset" class="reset">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +81,8 @@
               </svg>
             </button>
           </form>
+
+          <!-- Button to show new contact form -->
           <button id="showFormBtn" class="pushable" type="button">
             <span class="edge"></span>
             <span class="front">
@@ -94,6 +108,7 @@
           </button>
         </div>
 
+        <!-- Empty list message -->
         <div id="empty-list">
           <h3>
             Your Contact List is Empty, <br />
@@ -101,27 +116,34 @@
           </h3>
         </div>
 
+        <!-- Contact list container -->
         <div class="phone-contact-list"></div>
-        <span class="rotate-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-rotate-cw"
-          >
-            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
-            <path d="M21 3v5h-5" />
-          </svg>
-        </span>
+
+        <!-- Rotate button for refreshing -->
+        <div class="rotation">
+          <span class="rotate-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-rotate-cw"
+            >
+              <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+              <path d="M21 3v5h-5" />
+            </svg>
+          </span>
+        </div>
+
+        <!-- Delete all contacts button -->
         <button id="delete-all" class="pushable" type="button">
           <span class="edge"></span>
-          <span class="front delete-btn"> Delete ALl Contacts </span>
+          <span class="front delete-btn"> Delete All Contacts </span>
         </button>
 
         <!-- Modal Form-->
@@ -131,6 +153,7 @@
               <p class="alert">New Contact</p>
             </div>
             <form id="contactForm">
+              <!-- Input fields for new contact -->
               <div class="form-label">
                 <label class="label-type" for="name">Name</label>
                 <div class="error"></div>
@@ -167,14 +190,14 @@
               <div class="form-property">
                 <label class="label-type">Address</label>
                 <div class="error"></div>
-                <label for="address"></label
-                ><input
+                <input
                   type="text"
                   class="new-contact-input"
                   placeholder="123 Main Street, Anytown, USA"
                   id="address"
                 />
               </div>
+              <!-- Action buttons -->
               <div class="actions">
                 <button type="button" class="mark-as-read cancelBtn">
                   Cancel
@@ -193,9 +216,11 @@
             <div class="header">
               <p class="alert-Warning">Confirmation Required</p>
             </div>
+            <!-- Confirmation message -->
             <p id="confirm-text" class="message">
               Do you want to proceed with the changes?
             </p>
+            <!-- Confirmation buttons -->
             <div class="actions">
               <button
                 id="confirm-cancelBtn"
@@ -217,9 +242,11 @@
           </div>
         </section>
 
-        <!-- footer-->
+        <!-- Footer -->
         <footer class="footer">
+          <!-- Copyright notice -->
           <div class="footer-text">All Rights Reserved &#169; Taha Zoabi</div>
+          <!-- Social media links -->
           <div class="footer-links">
             <a href="https://github.com/TahaZoabi" target="_blank">
               <svg
@@ -270,13 +297,14 @@
               >
                 <path
                   d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
-                />
-              </svg>
-            </a>
+                /></svg
+            ></a>
           </div>
         </footer>
       </section>
     </main>
+
+    <!-- JavaScript file -->
     <script src="JS/script.js"></script>
   </body>
 </html>
